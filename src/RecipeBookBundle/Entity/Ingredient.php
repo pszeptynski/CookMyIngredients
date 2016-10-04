@@ -10,8 +10,15 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RecipeBookBundle\Entity\IngredientRepository")
  */
-class Ingredient
-{
+class Ingredient {
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="Recipe", inversedBy="ingredients")
+     * @ORM\JoinColumn(name="recipe_id", referencedColumnName="id")
+     */
+    private $recipe;
+
     /**
      * @var integer
      *
@@ -42,14 +49,12 @@ class Ingredient
      */
     private $recipeId;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -59,8 +64,7 @@ class Ingredient
      * @param integer $dictId
      * @return Ingredient
      */
-    public function setDictId($dictId)
-    {
+    public function setDictId($dictId) {
         $this->dictId = $dictId;
 
         return $this;
@@ -71,8 +75,7 @@ class Ingredient
      *
      * @return integer 
      */
-    public function getDictId()
-    {
+    public function getDictId() {
         return $this->dictId;
     }
 
@@ -82,8 +85,7 @@ class Ingredient
      * @param integer $quantity
      * @return Ingredient
      */
-    public function setQuantity($quantity)
-    {
+    public function setQuantity($quantity) {
         $this->quantity = $quantity;
 
         return $this;
@@ -94,8 +96,7 @@ class Ingredient
      *
      * @return integer 
      */
-    public function getQuantity()
-    {
+    public function getQuantity() {
         return $this->quantity;
     }
 
@@ -105,8 +106,7 @@ class Ingredient
      * @param integer $recipeId
      * @return Ingredient
      */
-    public function setRecipeId($recipeId)
-    {
+    public function setRecipeId($recipeId) {
         $this->recipeId = $recipeId;
 
         return $this;
@@ -117,8 +117,31 @@ class Ingredient
      *
      * @return integer 
      */
-    public function getRecipeId()
-    {
+    public function getRecipeId() {
         return $this->recipeId;
+    }
+
+
+    /**
+     * Set recipe
+     *
+     * @param \RecipeBookBundle\Entity\Recipe $recipe
+     * @return Ingredient
+     */
+    public function setRecipe(\RecipeBookBundle\Entity\Recipe $recipe = null)
+    {
+        $this->recipe = $recipe;
+
+        return $this;
+    }
+
+    /**
+     * Get recipe
+     *
+     * @return \RecipeBookBundle\Entity\Recipe 
+     */
+    public function getRecipe()
+    {
+        return $this->recipe;
     }
 }

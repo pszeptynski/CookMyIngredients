@@ -10,8 +10,25 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table()
  * @ORM\Entity(repositoryClass="RecipeBookBundle\Entity\RecipeRepository")
  */
-class Recipe
-{
+class Recipe {
+
+    /**
+     * @ORM\OneToMany(targetEntity="Ingredient", mappedBy="recipe")
+     */
+    private $ingredients;
+    
+    /**
+     * @ORM\OneToMany(targetEntity="SecondaryIngredient", mappedBy="recipe")
+     */
+    private $secondaryIngredients;
+    
+    
+    public function __construct() {
+        $this->ingredients = new ArrayCollection();
+        $this->secondaryIngredients = new ArrayCollection();
+        
+    }
+
     /**
      * @var integer
      *
@@ -42,14 +59,12 @@ class Recipe
      */
     private $created;
 
-
     /**
      * Get id
      *
      * @return integer 
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -59,8 +74,7 @@ class Recipe
      * @param string $name
      * @return Recipe
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
 
         return $this;
@@ -71,8 +85,7 @@ class Recipe
      *
      * @return string 
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -82,8 +95,7 @@ class Recipe
      * @param integer $userId
      * @return Recipe
      */
-    public function setUserId($userId)
-    {
+    public function setUserId($userId) {
         $this->userId = $userId;
 
         return $this;
@@ -94,8 +106,7 @@ class Recipe
      *
      * @return integer 
      */
-    public function getUserId()
-    {
+    public function getUserId() {
         return $this->userId;
     }
 
@@ -105,8 +116,7 @@ class Recipe
      * @param \DateTime $created
      * @return Recipe
      */
-    public function setCreated($created)
-    {
+    public function setCreated($created) {
         $this->created = $created;
 
         return $this;
@@ -117,8 +127,74 @@ class Recipe
      *
      * @return \DateTime 
      */
-    public function getCreated()
-    {
+    public function getCreated() {
         return $this->created;
+    }
+
+
+    /**
+     * Add ingredients
+     *
+     * @param \RecipeBookBundle\Entity\Ingredient $ingredients
+     * @return Recipe
+     */
+    public function addIngredient(\RecipeBookBundle\Entity\Ingredient $ingredients)
+    {
+        $this->ingredients[] = $ingredients;
+
+        return $this;
+    }
+
+    /**
+     * Remove ingredients
+     *
+     * @param \RecipeBookBundle\Entity\Ingredient $ingredients
+     */
+    public function removeIngredient(\RecipeBookBundle\Entity\Ingredient $ingredients)
+    {
+        $this->ingredients->removeElement($ingredients);
+    }
+
+    /**
+     * Get ingredients
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getIngredients()
+    {
+        return $this->ingredients;
+    }
+
+    /**
+     * Add secondaryIngredients
+     *
+     * @param \RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients
+     * @return Recipe
+     */
+    public function addSecondaryIngredient(\RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients)
+    {
+        $this->secondaryIngredients[] = $secondaryIngredients;
+
+        return $this;
+    }
+
+    /**
+     * Remove secondaryIngredients
+     *
+     * @param \RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients
+     */
+    public function removeSecondaryIngredient(\RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients)
+    {
+        $this->secondaryIngredients->removeElement($secondaryIngredients);
+    }
+
+    /**
+     * Get secondaryIngredients
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSecondaryIngredients()
+    {
+        return $this->secondaryIngredients;
     }
 }

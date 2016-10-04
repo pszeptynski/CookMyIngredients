@@ -12,6 +12,13 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class SecondaryIngredient
 {
+     /**
+     *
+     * @ORM\ManyToOne(targetEntity="Recipe", inversedBy="secondaryIngredients")
+     * @ORM\JoinColumn(name="recipe_id", referencedColumnName="id")
+     */
+    private $recipe;
+    
     /**
      * @var integer
      *
@@ -120,5 +127,28 @@ class SecondaryIngredient
     public function getRecipeId()
     {
         return $this->recipeId;
+    }
+
+    /**
+     * Set recipe
+     *
+     * @param \RecipeBookBundle\Entity\Recipe $recipe
+     * @return SecondaryIngredient
+     */
+    public function setRecipe(\RecipeBookBundle\Entity\Recipe $recipe = null)
+    {
+        $this->recipe = $recipe;
+
+        return $this;
+    }
+
+    /**
+     * Get recipe
+     *
+     * @return \RecipeBookBundle\Entity\Recipe 
+     */
+    public function getRecipe()
+    {
+        return $this->recipe;
     }
 }
