@@ -28,26 +28,18 @@ class Ingredient {
      */
     private $id;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="dict_id", type="integer")
+       /**
+     * @ORM\ManyToOne(targetEntity="Dictionary")
+     * @ORM\JoinColumn(name="dict_id", referencedColumnName="id")
      */
-    private $dictId;
-
+    private $dictionary;
+    
     /**
      * @var integer
      *
      * @ORM\Column(name="quantity", type="integer")
      */
     private $quantity;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="recipe_id", type="integer")
-     */
-    private $recipeId;
 
     /**
      * Get id
@@ -143,5 +135,28 @@ class Ingredient {
     public function getRecipe()
     {
         return $this->recipe;
+    }
+
+    /**
+     * Set dictionary
+     *
+     * @param \RecipeBookBundle\Entity\Dictionary $dictionary
+     * @return Ingredient
+     */
+    public function setDictionary(\RecipeBookBundle\Entity\Dictionary $dictionary = null)
+    {
+        $this->dictionary = $dictionary;
+
+        return $this;
+    }
+
+    /**
+     * Get dictionary
+     *
+     * @return \RecipeBookBundle\Entity\Dictionary 
+     */
+    public function getDictionary()
+    {
+        return $this->dictionary;
     }
 }

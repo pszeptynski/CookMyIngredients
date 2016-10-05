@@ -50,7 +50,7 @@ class Recipe {
      *
      * @ORM\Column(name="user_id", type="integer")
      */
-    private $userId;
+    private $user;
 
     /**
      * @var \DateTime
@@ -196,5 +196,28 @@ class Recipe {
     public function getSecondaryIngredients()
     {
         return $this->secondaryIngredients;
+    }
+
+    /**
+     * Set user
+     *
+     * @param integer $user
+     * @return Recipe
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return integer 
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
