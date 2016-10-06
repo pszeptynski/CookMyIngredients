@@ -11,12 +11,14 @@
                 <div class="col-md-4">
                     {% block fos_user_content %}
                     {% endblock fos_user_content %}
+
+                    <a class="btn btn-info" href="{{ path('newItem') }}"> Add a new ingredient to dictionary </a>
                     <ul>
                         {% for item in dictionary %}
                             <li> ID: {{ item.id }} </li>
                             <li> Name: {{ item.name }} </li>
                             <li> Measurement Unit: {{ item.measurementUnit }} </li>
-                            <a href="{{ path('showItem',{'id':item.id}) }}"> Show item </a>
+                            <a class="btn btn-default" href="{{ path('showItem',{'id':item.id}) }}"> Show item </a>
                             <br/>
                         {% endfor %}
                     </ul>
