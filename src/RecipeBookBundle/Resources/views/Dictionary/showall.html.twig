@@ -5,14 +5,24 @@
 {% block body %}
     <h1>Welcome to the Dictionary:showall page</h1>
 
-    <ul>
-        {% for item in dictionary %}
-            <li> ID: {{ item.id }} </li>
-            <li> Name: {{ item.name }} </li>
-            <li> Measurement Unit: {{ item.measurementUnit }} </li>
-            <a href="{{ path('showItem',{'id':item.id}) }}"> Show item </a>
-            <br/>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4">
+                <div class="col-md-4">
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+                    <ul>
+                        {% for item in dictionary %}
+                            <li> ID: {{ item.id }} </li>
+                            <li> Name: {{ item.name }} </li>
+                            <li> Measurement Unit: {{ item.measurementUnit }} </li>
+                            <a href="{{ path('showItem',{'id':item.id}) }}"> Show item </a>
+                            <br/>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
