@@ -1,0 +1,37 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}RecipeBookBundle:Dictionary:update{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Dictionary:update page</h1>
+
+    {#{{ form_start(update_form) }}
+    {{ form_widget(update_form) }}
+    {{ form_end(update_form) }}
+    #}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4">
+                <div class="col-md-4">
+                    {% block fos_user_content %}
+                    {% endblock fos_user_content %}
+
+                    {{ form(update_form) }}
+
+                    <ul class="record_actions">
+                        <li>
+                            <a href="{{ path('showAll') }}">
+                                Back to the list
+                            </a>
+                        </li>
+                        {#    <li>{{ form(delete_form) }}</li>#}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
