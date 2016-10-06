@@ -1,0 +1,18 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}RecipeBookBundle:Dictionary:showall{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the Dictionary:showall page</h1>
+
+    <ul>
+        {% for item in dictionary %}
+            <li> ID: {{ item.id }} </li>
+            <li> Name: {{ item.name }} </li>
+            <li> Measurement Unit: {{ item.measurementUnit }} </li>
+{#            <a href="{{ path('showItem',{'id':dictionary.id}) }}"> Show item </a>#}
+            <br/>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
