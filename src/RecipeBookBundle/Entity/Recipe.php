@@ -16,17 +16,15 @@ class Recipe {
      * @ORM\OneToMany(targetEntity="Ingredient", mappedBy="recipe")
      */
     private $ingredients;
-    
+
     /**
      * @ORM\OneToMany(targetEntity="SecondaryIngredient", mappedBy="recipe")
      */
     private $secondaryIngredients;
-    
-    
+
     public function __construct() {
         $this->ingredients = new ArrayCollection();
         $this->secondaryIngredients = new ArrayCollection();
-        
     }
 
     /**
@@ -46,6 +44,8 @@ class Recipe {
     private $name;
 
     /**
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="recipes")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * @var integer
      *
      * @ORM\Column(name="user_id", type="integer")
@@ -131,15 +131,13 @@ class Recipe {
         return $this->created;
     }
 
-
     /**
      * Add ingredients
      *
      * @param \RecipeBookBundle\Entity\Ingredient $ingredients
      * @return Recipe
      */
-    public function addIngredient(\RecipeBookBundle\Entity\Ingredient $ingredients)
-    {
+    public function addIngredient(\RecipeBookBundle\Entity\Ingredient $ingredients) {
         $this->ingredients[] = $ingredients;
 
         return $this;
@@ -150,8 +148,7 @@ class Recipe {
      *
      * @param \RecipeBookBundle\Entity\Ingredient $ingredients
      */
-    public function removeIngredient(\RecipeBookBundle\Entity\Ingredient $ingredients)
-    {
+    public function removeIngredient(\RecipeBookBundle\Entity\Ingredient $ingredients) {
         $this->ingredients->removeElement($ingredients);
     }
 
@@ -160,8 +157,7 @@ class Recipe {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getIngredients()
-    {
+    public function getIngredients() {
         return $this->ingredients;
     }
 
@@ -171,8 +167,7 @@ class Recipe {
      * @param \RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients
      * @return Recipe
      */
-    public function addSecondaryIngredient(\RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients)
-    {
+    public function addSecondaryIngredient(\RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients) {
         $this->secondaryIngredients[] = $secondaryIngredients;
 
         return $this;
@@ -183,8 +178,7 @@ class Recipe {
      *
      * @param \RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients
      */
-    public function removeSecondaryIngredient(\RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients)
-    {
+    public function removeSecondaryIngredient(\RecipeBookBundle\Entity\SecondaryIngredient $secondaryIngredients) {
         $this->secondaryIngredients->removeElement($secondaryIngredients);
     }
 
@@ -193,8 +187,7 @@ class Recipe {
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getSecondaryIngredients()
-    {
+    public function getSecondaryIngredients() {
         return $this->secondaryIngredients;
     }
 
@@ -204,8 +197,7 @@ class Recipe {
      * @param integer $user
      * @return Recipe
      */
-    public function setUser($user)
-    {
+    public function setUser($user) {
         $this->user = $user;
 
         return $this;
@@ -216,8 +208,8 @@ class Recipe {
      *
      * @return integer 
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
+
 }
