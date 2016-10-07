@@ -46,9 +46,6 @@ class Recipe {
     /**
      * @ORM\ManyToOne(targetEntity="User", inversedBy="recipes")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     * @var integer
-     *
-     * @ORM\Column(name="user_id", type="integer")
      */
     private $user;
 
