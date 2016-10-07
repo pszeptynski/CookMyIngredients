@@ -5,7 +5,6 @@ namespace RecipeBookBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
-
 /**
  * Recipe
  *
@@ -52,9 +51,14 @@ class Recipe {
     private $user;
 
     /**
+     * @ORM\Column(name="preparation", type="text")
+     */
+    private $preparation;
+
+    /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(name="created", type="date")
      */
     private $created;
 
@@ -209,6 +213,27 @@ class Recipe {
      */
     public function getUser() {
         return $this->user;
+    }
+
+    /**
+     * Set preparation
+     *
+     * @param string $preparation
+     * @return Recipe
+     */
+    public function setPreparation($preparation) {
+        $this->preparation = $preparation;
+
+        return $this;
+    }
+
+    /**
+     * Get preparation
+     *
+     * @return string 
+     */
+    public function getPreparation() {
+        return $this->preparation;
     }
 
 }
