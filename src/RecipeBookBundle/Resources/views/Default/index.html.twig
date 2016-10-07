@@ -1,1 +1,24 @@
-Hello {{ name }}!
+{% extends "base.html.twig" %}
+{% block body %}
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-4">
+                <h2>Ingredients</h2>
+                <ul>
+                {% for ing in entity.ingredients %}
+                    <li>  {{ ing.dictionary.name }} &nbsp {{ ing.quantity }} &nbsp {{ ing.dictionary.measurementUnit}}  </li>
+                {% endfor %}
+                </ul>
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+            <div class="col-md-8">
+                <h2>Recipe</h2>
+                {{ entity.preparation }}
+                <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            </div>
+        </div>
+
+        <hr>
+
+    {% endblock %}
