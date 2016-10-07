@@ -11,6 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity(repositoryClass="RecipeBookBundle\Entity\DictionaryRepository")
  */
 class Dictionary {
+    
+    public function __toString() {
+        return $this->name;
+    }
 
     /**
      * @var integer
