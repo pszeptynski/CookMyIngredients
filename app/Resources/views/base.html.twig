@@ -66,10 +66,10 @@
                 </div><!--/.navbar-collapse -->
             </div>
         </nav>
-        {% block body %}
 
             <!-- Main jumbotron for a primary marketing message or call to action -->
-            <div class="jumbotron">
+           <div class="jumbotron" style="background-image: url(http://previews.123rf.com/images/Taiga/Taiga1106/taiga110600012/9925705-Ingredients-for-Italian-cooking-frame-composition-isolated-on-white-Stock-Photo.jpg)">
+{#           <div class="jumbotron">#}
                 <div class="container">
                     <h1>Welcome to Cook My Ingredients!</h1>
                     <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
@@ -77,7 +77,7 @@
                 </div>
             </div>
 
-            <div class="container">
+{#            <div class="container">
                 <!-- Example row of columns -->
                 <div class="row">
                     <div class="col-md-4">
@@ -90,16 +90,16 @@
                         <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
                         <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                     </div>
-                </div>
-
-                <hr>
+                </div>#}
+ 
+        {% block body %}
             {% endblock %}
 
             {#  <nav class="navbar navbar-inverse bottom">
                 <p>&copy; 2016 Piotr Szeptyński</p>
               </nav>
             #}
-        </div> <!-- /container -->
+{#        </div> <!-- /container -->#}
 
 
         <!-- Bootstrap core JavaScript
