@@ -13,6 +13,10 @@ use Doctrine\Common\Collections\ArrayCollection;
  */
 class Recipe {
 
+    public function __toString() {
+        return $this->name;
+        
+    }
     /**
      * @ORM\OneToMany(targetEntity="Ingredient", mappedBy="recipe")
      */
