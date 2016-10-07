@@ -58,7 +58,7 @@ class Recipe {
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="date")
+     * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
