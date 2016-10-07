@@ -1,0 +1,53 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Ingredient list</h1>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-offset-4">
+                <div class="col-md-4">
+                    <table class="records_list">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Quantity</th>
+                                <th>Unit</th>
+                                <th>Name</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for entity in entities %}
+                                <tr>
+                                    <td><a href="{{ path('ingredient_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                                    <td>{{ entity.quantity }}</td>
+                                    <td>{{ entity.dictionary.measurementUnit }}</td>
+                                    <td>{{ entity.dictionary.name }}</td>
+                                    <td>
+                                        <ul>
+                                            <li>
+                                                <a href="{{ path('ingredient_show', { 'id': entity.id }) }}">show</a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('ingredient_edit', { 'id': entity.id }) }}">edit</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <ul>
+                        <li>
+                            <a href="{{ path('ingredient_new') }}">
+                                Create a new entry
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
