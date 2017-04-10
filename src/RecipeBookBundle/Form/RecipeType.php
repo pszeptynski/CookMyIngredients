@@ -17,6 +17,7 @@ class RecipeType extends AbstractType
         $builder
             ->add('name')
             ->add('preparation')
+//            ->add('ingredients')
 //            ->add('created')
 //            ->add('user')
         ;

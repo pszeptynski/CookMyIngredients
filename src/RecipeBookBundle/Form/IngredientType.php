@@ -16,7 +16,7 @@ class IngredientType extends AbstractType
     {
         $builder
             ->add('quantity')
-//            ->add('recipe')
+            ->add('recipe')
             ->add('dictionary')
         ;
     }

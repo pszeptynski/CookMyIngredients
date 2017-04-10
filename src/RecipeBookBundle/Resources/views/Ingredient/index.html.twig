@@ -14,6 +14,7 @@
                                 <th>Quantity</th>
                                 <th>Unit</th>
                                 <th>Name</th>
+                                <th>Recipe</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -24,6 +25,7 @@
                                     <td>{{ entity.quantity }}</td>
                                     <td>{{ entity.dictionary.measurementUnit }}</td>
                                     <td>{{ entity.dictionary.name }}</td>
+                                    <td>{{ entity.recipe.name | default("none") }}</td>
                                     <td>
                                         <ul>
                                             <li>
